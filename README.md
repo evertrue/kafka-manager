@@ -1,6 +1,15 @@
 Kafka Manager
 =============
 
+## Building & Pushing for EverTrue
+
+We use Docker to package this tool for use in our environments, like so:
+
+```bash
+$ docker build -t registry.evertrue.com/evertrue/kafka-manager:x.y.z .
+$ docker push registry.evertrue.com/evertrue/kafka-manager:x.y.z
+```
+
 A tool for managing [Apache Kafka](http://kafka.apache.org).
 
 It supports the following :
