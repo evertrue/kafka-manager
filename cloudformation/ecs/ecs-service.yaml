@@ -94,7 +94,11 @@ Resources:
                 - Name: web
                   Essential: true
                   Image: !Sub ${RegistryId}.dkr.ecr.us-east-1.amazonaws.com/evertrue/${TaskDefinitionFamily}:${ImageTag}
+                  # Service idles at ~266 MiB (JVM baseline). Hard limit kept at 512;
+                  # MemoryReservation added so ECS accounts for the real footprint at
+                  # placement instead of treating it as 0.
                   Memory: 512
+                  MemoryReservation: 384
                   Environment:
                     - Name: APP_ENV
                       Value: !Ref EnvType
